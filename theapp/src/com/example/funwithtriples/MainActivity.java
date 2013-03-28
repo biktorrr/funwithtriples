@@ -56,8 +56,8 @@ public class MainActivity extends Activity {
 //	myWebView.loadUrl("http://view.jquerymobile.com/demos/");
 //	myWebView.loadUrl("http://93.191.131.147/eastapp/hybrid.php");
 		
-		
-		myWebView.loadUrl("file:///10.60.249.202/index.html");
+
+		myWebView.loadUrl("http://10.60.249.202/index.html");
 
 		
 	}
