@@ -1,4 +1,4 @@
-:- module(zebra,[solve/1,solve/2,main/0, main/1]).
+:- module(zebra,[pp/1,solve/1,solve/2,main/0, main/1]).
 
 :- use_module(library(chr)).
 :- use_module(library(lists)).
@@ -60,6 +60,13 @@ test(N) :-
         ;
 		true
         ).
+
+pp(S) :-
+	forall(nth1(I,S,L),
+	       pp_house(I,L)).
+
+pp_house(I, [ ACo, AN, ACa, AD, AP ]) :-
+	format('House ~d: ~w ~w ~w ~w ~w~n', [I, ACo, AN, ACa, AD, AP]).
 
 solve(S) :-
 	clues(Clues),
