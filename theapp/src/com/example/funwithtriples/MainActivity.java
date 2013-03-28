@@ -94,7 +94,7 @@ public class MainActivity extends Activity {
 			public String pair(String friendID) {
 		        String responseString;
 				try {
-					responseString = new TalkToServerTask().execute(new String[]{"welcome" , myID, friendID}).get();
+					responseString = new TalkToServerTask().execute(new String[]{"pair" , myID, friendID}).get();
 					return responseString;
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -105,19 +105,24 @@ public class MainActivity extends Activity {
 				}
 				return null;
 			}
+
+			public String getID() {
+				return myID;
+			}
+
+	
 	}
 
-	protected String createID (){
+	public String createID (){
 		if (myID == null){
 			myID = UUID.randomUUID().toString().substring(0,4);
 			return myID;
 		}
 		else return myID;
 	}
+
 	
-	protected String getID() {
-		return myID;
-	}
+
 
 	
 }

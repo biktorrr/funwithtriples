@@ -15,28 +15,23 @@
 		<div data-role="page" id="page1">
 		    <div data-theme="a" data-role="header">
 		        <h3>
-		            Axioms
+		            Welcome <span id="userid">none</span>
 		        </h3>
 		    </div>
 		    <div data-role="content">
-		        <ul id="axiomList" data-role="listview" data-divider-theme="b" data-inset="true">
-		            <li data-role="list-divider" role="heading">
-		                My Axioms
-		            </li>
-		            <li data-theme="c">
-		                <a href="#page1" data-transition="none">
-		                    Button
-		                </a>
-		            </li>
-		            <li data-role="list-divider" role="heading">
-		                Retrieved Axioms
-		            </li>
-		        </ul>
-		        <a data-role="button" id="register" href="#page1">
-		            Register
+		        <div data-role="fieldcontain">
+		            <fieldset data-role="controlgroup">
+		                <label for="textinput1">
+		                    User to pair with:
+		                </label>
+		                <input name="" id="pairinguser" placeholder="" value="" type="text">
+		            </fieldset>
+		        </div>
+		        <a data-role="button" id="pair" href="#page1">
+		            Pair
 		        </a>
-				<div id="userid">
-					Blaat
+				<div id="facts">
+					Facts
 				</div>
 		        <div id="navbar" data-role="navbar" data-iconpos="top">
 		            <ul>
@@ -62,19 +57,38 @@
 		</div>
 		<script language="javascript">
 			$(document).ready(function() {
-				$('#register').click(function(){
+				
+				var myID = Android.getID();
+				
+				$('#userid').html(myID);
+				
+				var response = Android.register(); 
+				
+				if (response == null) {
+					   response = "Nothing retrieved from server";
+				   } 
+				
+				   
+				$('#facts').html(response);
+				
+				$('#pair').click(function(){
 					   var response;
-						
-					   $('#userid').html("Alert 1");
-					   response = Android.register(); 
-					   $('#userid').html("Alert 2");
+					   
+					   var friendID = $('#pairinguser').val();
+					   
+					   
+					   $('#facts').html('');
+					   
+					   response = Android.pair(friendID); 
+					   
+					   $('#pairinguser').val('');
 					   
 					   if (response == null) {
-						   response = "Nothing";
+						   response = "Nothing retrieved from server";
 					   } 
 					
 					   
-					   $('#userid').html(response);
+					   $('#facts').html(response);
 					});
 				});
 			
