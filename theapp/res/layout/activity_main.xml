@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="70dp"
-        android:text="Button" />
+        android:layout_marginBottom="15dp"
+        android:text="@string/get_knowledge" />
 
 </RelativeLayout>

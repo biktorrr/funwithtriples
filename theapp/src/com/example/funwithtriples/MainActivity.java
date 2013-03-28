@@ -5,10 +5,11 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,9 +30,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		Button button = (Button) findViewById(R.id.updateButton);
 		createID();
-		register();
+		String myKnowledge = register();
         button.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				TextView tripleView = (TextView) findViewById(R.id.triplesTextView);
@@ -55,12 +55,11 @@ public class MainActivity extends Activity {
 		else return myID;
 	}
 	
-	protected void register() {
-        TextView tripleView = (TextView) findViewById(R.id.triplesTextView);
+	protected String register() {
         String responseString;
 		try {
 			responseString = new TalkToServerTask().execute(new String[]{myID,"some_other"}).get();
-			tripleView.setText(responseString);
+			return responseString;
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -68,6 +67,7 @@ public class MainActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 	}
 }
 
