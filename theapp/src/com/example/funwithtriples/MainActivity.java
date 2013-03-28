@@ -73,6 +73,38 @@ public class MainActivity extends Activity {
 				Log.i("SemHybrid","trigger me!"+msg  );
 			}
 
+			
+			public String register() {
+		        String responseString;
+		        
+		        
+				try {
+					responseString = new TalkToServerTask().execute(new String[]{"welcome" , myID,"some_other"}).get();
+					return responseString;
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ExecutionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return null;
+			}
+			
+			public String pair(String friendID) {
+		        String responseString;
+				try {
+					responseString = new TalkToServerTask().execute(new String[]{"welcome" , myID, friendID}).get();
+					return responseString;
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ExecutionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return null;
+			}
 	}
 
 	protected String createID (){
@@ -87,35 +119,7 @@ public class MainActivity extends Activity {
 		return myID;
 	}
 
-	protected String register() {
-        String responseString;
-		try {
-			responseString = new TalkToServerTask().execute(new String[]{"welcome" , myID,"some_other"}).get();
-			return responseString;
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
 	
-	protected String pair(String friendID) {
-        String responseString;
-		try {
-			responseString = new TalkToServerTask().execute(new String[]{"welcome" , myID, friendID}).get();
-			return responseString;
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
 }
 
 class TalkToServerTask extends AsyncTask<String, Void, String> {

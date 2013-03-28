@@ -6,23 +6,7 @@
 		
 	</head>
 	
-	<script>
-		$(#register).click(function(){
-		   var response;
-		   
-		   response = Android.register(); 
-		   
-		   if (response == null) {
-			   response = "Nothing";
-		   } else {
-			   response = "Nasty";
-		   }
-		
-		   $(#userid).html(response);
-		});
-	
-	
-	</script>
+
 	
 	
 	
@@ -76,4 +60,26 @@
 		        </div>
 		    </div>
 		</div>
+		<script language="javascript">
+			$(document).ready(function() {
+				$('#register').click(function(){
+					   var response;
+						
+					   $('#userid').html("Alert 1");
+					   response = Android.register(); 
+					   $('#userid').html("Alert 2");
+					   
+					   if (response == null) {
+						   response = "Nothing";
+					   } 
+					
+					   
+					   $('#userid').html(response);
+					});
+				});
+			
+			
+	
+	
+	</script>
 </body>
