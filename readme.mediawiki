@@ -1,42 +1,24 @@
-<html>
-  <head>
-    <title>Sex with Triples</title>
-  </head>
-  <body>
-    <h1>Fun with Triples</h1>
-    
-    <h2>Project participants</h2>
-    
-    <ul>
-      <li>Antonis Loizou</li>
-      <li>Jan Wielemaker</li>
-      <li>Niels Ockeloen</li>
-      <li>Rinke Hoekstra</li>
-      <li>Victor de Boer</li>
-      <li>Wouter Beek</li>
-    </ul>
-    
-    <h2>Architecture</h2>
-    
-    <p>Android devices communicate using Bluetooth.</p>
-    
-    <p>Once two Android devices are near they both send a <i>unite(D)</i>
-    command to the server, where <i>D</i> is the device name of the other
-    device.</p>
-    
-    <p>The server stores triples related to the devices. The server starts
-    out with triples for each of the devices, instantiating the use case
-    'Einstein's Riddle' (see below).</p>
-    
-    <p></p>
-    
-    <h2>Technical ingredients</h2>
-    
-    <ul>
-      <li>Android API 17</li>
-    </ul>
-    
-    <h2>Use case: Einstein's Riddle</h2>
-    
-  </body>
-</html>
+=Fun with Triples=
+
+==Project participants==
+
+* Antonis Loizou
+* Jan Wielemaker
+* Niels Ockeloen
+* Rinke Hoekstra
+* Victor de Boer
+* Wouter Beek
+
+=Architecture=
+
+Android devices communicate using Bluetooth.</p>
+
+Once two Android devices are near they both send a <i>unite(D)</i>
+command to the server, where <i>D</i> is the device name of the other
+device.
+
+The server stores triples related to the devices. The server starts
+out with triples for each of the devices, instantiating the use case
+'Einstein's Riddle' (see below).
+
+==Use case: Einstein's Riddle==
