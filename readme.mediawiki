@@ -13,6 +13,10 @@
 
 Android devices communicate using Bluetooth.</p>
 
+At the beginning of the game all Android devices send a <i>start</i> command
+to the server. The server returns the JSON format containing each device's
+believes.
+
 Once two Android devices are near they both send a <i>unite(D)</i>
 command to the server, where <i>D</i> is the device name of the other
 device.
@@ -22,3 +26,76 @@ out with triples for each of the devices, instantiating the use case
 'Einstein's Riddle' (see below).
 
 ==Use case: Einstein's Riddle==
+
+The vocabulary for this riddle consists of five binary predicates and
+25 constants in 5 categories (unary predicates that are not represented).
+
+The subject terms are always houses; the object terms are never houses.
+
+Houses:
+* House1
+* House2
+* House3
+* House4
+* House5
+
+Properties with their respective values:
+* Color
+** Blue
+** Green
+** Ivory
+** Red 
+** Yellow
+* Drink
+** Coffee
+** Milk
+** OrangeJuice
+** Tea
+** Water
+* Person
+** Englishman
+** Japanese
+** Norwegian
+** Spaniard
+** Ukrainian
+* Pet
+** Dog
+** Fox
+** Horse
+** Snails
+** Zebra
+* Smoke
+** Chesterfield
+** Kools
+** LuckyStrike
+** OldGold
+** Parliament
+
+==Receive request==
+
+The Android devices receive their beliefs in a 5x5x5 JSON matrix,
+with the following dimensions:
+
+Dimensions:
+1. House
+2. Property
+3. Property value
+
+See the previous section for the respective values.
+
+<pre>
+{
+  "House1": [
+    {
+      "Color": "Blue",
+      "Drink": "Water",
+      "Person": "null",
+      "Pet": "null",
+      "Smoke": "null"
+    }
+  ],
+  "House2": [
+...
+  ]
+}
+</pre>
