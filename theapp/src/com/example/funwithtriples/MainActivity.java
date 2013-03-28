@@ -9,8 +9,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -78,16 +76,35 @@ public class MainActivity extends Activity {
 
 	protected String createID (){
 		if (myID == null){
-			myID = UUID.randomUUID().toString();
+			myID = UUID.randomUUID().toString().substring(0,4);
 			return myID;
 		}
 		else return myID;
 	}
 	
+	protected String getID() {
+		return myID;
+	}
+
 	protected String register() {
         String responseString;
 		try {
-			responseString = new TalkToServerTask().execute(new String[]{myID,"some_other"}).get();
+			responseString = new TalkToServerTask().execute(new String[]{"welcome" , myID,"some_other"}).get();
+			return responseString;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	protected String pair(String friendID) {
+        String responseString;
+		try {
+			responseString = new TalkToServerTask().execute(new String[]{"welcome" , myID, friendID}).get();
 			return responseString;
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -106,7 +123,9 @@ class TalkToServerTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
     	HttpClient httpclient = new DefaultHttpClient();
 		try {
-			String url = "http://10.60.249.202:6000/pair?me="+params[0]+"&with="+params[1];
+			String url = "http://10.60.249.202:8080/"+params[0]+"?me="+params[1];
+			if (params[0] == "pair")
+				url+="&with="+params[2];
 		    HttpResponse response = httpclient.execute(new HttpGet(url));
 	        ByteArrayOutputStream out = new ByteArrayOutputStream();
 	        response.getEntity().writeTo(out);
