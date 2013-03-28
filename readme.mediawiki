@@ -86,11 +86,11 @@ See the previous section for the respective values.
 <pre>
 {
   "house1": {
-    "car": "null",
+    "car": null,
     "color": "blue",
     "drink": "water",
-    "person": "null",
-    "pet": "null",
+    "person": null,
+    "pet": null,
   },
   "house2": {
 ...
