@@ -1,4 +1,4 @@
-:- module(zebra,[pp/1,solve/1,solve/2,main/0, main/1]).
+:- module(zebra,[common/2,pp/1,solve/1,solve/2,main/0, main/1]).
 
 :- use_module(library(chr)).
 :- use_module(library(lists)).
@@ -60,6 +60,27 @@ test(N) :-
         ;
 		true
         ).
+
+common(Clues, World) :-
+	findall(S, (solve(Clues, S0), copy_term_nat(S0,S)), Worlds),
+	common_world(Worlds, World).
+
+common_world([World], World) :- !.
+common_world([W1, W2|R], World) :-
+	unite_worlds(W1, W2, W),
+	common_world([W|R], World).
+
+unite_worlds(List1, List2, Union) :-
+	maplist(union_field, List1, List2, Union).
+
+union_field(V1, V2, V) :-
+	is_list(V1), is_list(V2), !,
+	unite_worlds(V1, V2, V).
+union_field(V1, V2, V) :-
+	(   V1 == V2
+	->  V = V1
+	;   true
+	).
 
 pp(S) :-
 	forall(nth1(I,S,L),
