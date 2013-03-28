@@ -106,7 +106,8 @@ assert_constraints([Deck|T], I) :-
 handout(Decks) :-
 	player_count(Count),
 	zebra:clues(All),
-	random_permutation(All, Random),
+	append([All,All], AllDups),
+	random_permutation(AllDups, Random),
 	length(Decks, Count),
 	deal(Random, 1, Count, Decks),
 	maplist(close_list, Decks).
@@ -139,8 +140,7 @@ assign_player(Id, Num) :-
 
 welcome(Me, World) :-
 	assign_player(Me, Num),
-	constraints(Num, Clues),
-	common(Clues, World).
+	world(Num, World).
 
 %%	pair(Me, With, World)
 
