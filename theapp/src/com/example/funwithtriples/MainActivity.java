@@ -1,5 +1,6 @@
 package com.example.funwithtriples;
 
+
 import java.io.ByteArrayOutputStream;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
@@ -14,30 +15,29 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.webkit.WebView;
+
 
 public class MainActivity extends Activity {
 	
 	private String myID;
 
+	WebView myWebView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Button button = (Button) findViewById(R.id.updateButton);
+
 		createID();
-		String myKnowledge = register();
-        button.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				TextView tripleView = (TextView) findViewById(R.id.triplesTextView);
-				tripleView.setText(myID);
-			}
-		});
+		
+		myWebView = (WebView) findViewById(R.id.myWebView);
 	}
 
 	@Override
@@ -45,6 +45,35 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	
+	public void onResume(){
+		super.onResume();
+		myWebView.getSettings().setJavaScriptEnabled(true);
+		myWebView.addJavascriptInterface(new JavaScriptInterface(this),
+				"Android");
+//	myWebView.loadUrl("http://view.jquerymobile.com/demos/");
+//	myWebView.loadUrl("http://93.191.131.147/eastapp/hybrid.php");
+		
+
+		myWebView.loadUrl("http://10.60.249.202/index.html");
+
+		
+	}
+
+	public class JavaScriptInterface {
+			Context mContext;
+
+			/** Instantiate the interface and set the context */
+			JavaScriptInterface(Context c) {
+				mContext = c;
+			}
+			
+			public void triggerMe(String msg){
+				Log.i("SemHybrid","trigger me!"+msg  );
+			}
+
 	}
 
 	protected String createID (){
