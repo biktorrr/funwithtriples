@@ -33,43 +33,43 @@ The vocabulary for this riddle consists of five binary predicates and
 The subject terms are always houses; the object terms are never houses.
 
 Houses:
-* House1
-* House2
-* House3
-* House4
-* House5
+* house1
+* house2
+* house3
+* house4
+* house5
 
 Properties with their respective values:
-* Color
-** Blue
-** Green
-** Ivory
-** Red 
-** Yellow
-* Drink
-** Coffee
-** Milk
-** OrangeJuice
-** Tea
-** Water
-* Person
-** Englishman
-** Japanese
-** Norwegian
-** Spaniard
-** Ukrainian
-* Pet
-** Dog
-** Fox
-** Horse
-** Snails
-** Zebra
-* Smoke
-** Chesterfield
-** Kools
-** LuckyStrike
-** OldGold
-** Parliament
+* car
+** honda
+** jaguar
+** masserati
+** porsche
+** saab
+* color
+** blue
+** green
+** ivory
+** red 
+** yellow
+* drink
+** coffee
+** milk
+** orange
+** tea
+** water
+* person
+** englishman
+** japanese
+** norwegian
+** spaniard
+** ukrainian
+* pet
+** dog
+** fox
+** horse
+** snails
+** zebra
 
 ==Receive request==
 
@@ -85,17 +85,15 @@ See the previous section for the respective values.
 
 <pre>
 {
-  "House1": [
-    {
-      "Color": "Blue",
-      "Drink": "Water",
-      "Person": "null",
-      "Pet": "null",
-      "Smoke": "null"
-    }
-  ],
-  "House2": [
+  "house1": {
+    "car": "null",
+    "color": "blue",
+    "drink": "water",
+    "person": "null",
+    "pet": "null",
+  },
+  "house2": {
 ...
-  ]
+  }
 }
 </pre>
