@@ -1,0 +1,4 @@
+theapp/.settings/*
+theapp/bin/*
+theapp/.classpath
+theapp/gen/*
