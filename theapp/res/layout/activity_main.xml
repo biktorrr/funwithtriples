@@ -9,8 +9,18 @@
     tools:context=".MainActivity" >
 
     <TextView
+        android:id="@+id/triplesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="@string/get_knowledge" />
 
 </RelativeLayout>

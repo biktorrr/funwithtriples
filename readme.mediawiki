@@ -1,6 +1,8 @@
 =Fun with Triples=
 
-==Project participants==
+Lets have fun with triples! Without triples...
+
+=Project participants=
 
 * Antonis Loizou
 * Jan Wielemaker
@@ -9,23 +11,22 @@
 * Victor de Boer
 * Wouter Beek
 
-=Architecture=
+=Server communication=
 
-Android devices communicate using Bluetooth.</p>
+==Game initialization==
 
-At the beginning of the game all Android devices send a <i>start</i> command
-to the server. The server returns the JSON format containing each device's
-believes.
+At the beginning of the game devices send <i>welcome(DEV_ID)</i> to the server.
 
-Once two Android devices are near they both send a <i>unite(D)</i>
-command to the server, where <i>D</i> is the device name of the other
-device.
+The server returns a JSON reply (see below) to device <i>DEV_ID</i>.
 
-The server stores triples related to the devices. The server starts
-out with triples for each of the devices, instantiating the use case
-'Einstein's Riddle' (see below).
+==Game run==
 
-==Use case: Einstein's Riddle==
+When Android devices connect over Bluetooth they both send a
+<i>unite(DEV_ID)</i> command to the server.
+
+The server returns a JSON reply (see below) to these two devices.
+
+=Use case: Einstein's Riddle=
 
 The vocabulary for this riddle consists of five binary predicates and
 25 constants in 5 categories (unary predicates that are not represented).
@@ -71,7 +72,7 @@ Properties with their respective values:
 ** snails
 ** zebra
 
-==Receive request==
+==JSON request format==
 
 The Android devices receive their beliefs in a 5x5x5 JSON matrix,
 with the following dimensions:
@@ -86,11 +87,11 @@ See the previous section for the respective values.
 <pre>
 {
   "house1": {
-    "car": "null",
+    "car": null,
     "color": "blue",
     "drink": "water",
-    "person": "null",
-    "pet": "null",
+    "person": null,
+    "pet": null,
   },
   "house2": {
 ...
