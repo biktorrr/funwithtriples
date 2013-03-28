@@ -55,7 +55,8 @@ public class MainActivity extends Activity {
 //	myWebView.loadUrl("http://93.191.131.147/eastapp/hybrid.php");
 		
 
-		myWebView.loadUrl("http://10.60.249.202:8080/index.html");
+		myWebView.loadUrl("http://eculture.cs.vu.nl:8088/index.html");
+		myWebView.loadUrl("file:///android_asset/axiom_list.html");
 
 		
 	}
@@ -123,7 +124,7 @@ class TalkToServerTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
     	HttpClient httpclient = new DefaultHttpClient();
 		try {
-			String url = "http://10.60.249.202:8080/"+params[0]+"?me="+params[1];
+			String url = "http://eculture.cs.vu.nl:8088/"+params[0]+"?me="+params[1];
 			if (params[0] == "pair")
 				url+="&with="+params[2];
 
