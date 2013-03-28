@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
 //	myWebView.loadUrl("http://93.191.131.147/eastapp/hybrid.php");
 		
 
-		myWebView.loadUrl("http://10.60.249.202/index.html");
+		myWebView.loadUrl("http://10.60.249.202:8080/index.html");
 
 		
 	}
@@ -126,6 +126,7 @@ class TalkToServerTask extends AsyncTask<String, Void, String> {
 			String url = "http://10.60.249.202:8080/"+params[0]+"?me="+params[1];
 			if (params[0] == "pair")
 				url+="&with="+params[2];
+
 		    HttpResponse response = httpclient.execute(new HttpGet(url));
 	        ByteArrayOutputStream out = new ByteArrayOutputStream();
 	        response.getEntity().writeTo(out);
